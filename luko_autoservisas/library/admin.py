@@ -1,8 +1,53 @@
 from django.contrib import admin
 from . import models
 
-admin.site.register(models.CarModel)
-admin.site.register(models.Car)
-admin.site.register(models.PartService)
-admin.site.register(models.ServiceOrder)
-admin.site.register(models.OrderLine)
+
+class OrderLineInline(admin.TabularInline):
+    model = models.OrderLine
+    extra = 0
+
+
+class ServiceOrderLineInline(admin.TabularInline):
+    model = models.ServiceOrder
+    extra = 0    
+
+
+class CarModelAdmin(admin.ModelAdmin):
+    list_display = ('brand', 'model', 'year')
+    search_fields = ('brand', 'model', 'year')
+    list_filter = ('brand', 'model', 'year')
+
+
+class CarAdmin(admin.ModelAdmin):
+    list_display = ('customer', 'car_model', 'plate', 'vin', 'color')
+    search_fields = ('customer', 'car_model__brand', 'plate', 'vin', 'color')
+    fieldsets = (
+        ('Customer', {'fields': (('customer'),)}),
+        ('Car', {'fields': (('car_model','plate', 'vin', 'color'),)}),
+    )
+    inlines = [ServiceOrderLineInline]
+
+
+class PartsServiceAdmin(admin.ModelAdmin):
+    list_display = ('name', 'price')
+    search_fields = ('name',)
+
+
+class OrderLineAdmin(admin.ModelAdmin):
+    list_display = ('order', 'part_service', 'quantity', 'price')
+    search_fields = ('order__car__customer', 'part_service__name', 'quantity', 'price')
+    
+
+
+class ServiceOrderAdmin(admin.ModelAdmin):
+    list_display = ('car', 'date', 'order_status')
+    search_fields = ('car__customer', 'date', 'order_status')
+    inlines = [OrderLineInline]
+
+
+
+admin.site.register(models.CarModel, CarModelAdmin)
+admin.site.register(models.Car, CarAdmin)
+admin.site.register(models.PartService, PartsServiceAdmin)
+admin.site.register(models.ServiceOrder, ServiceOrderAdmin)
+admin.site.register(models.OrderLine, OrderLineAdmin)

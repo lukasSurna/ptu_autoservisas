@@ -17,13 +17,13 @@ class CarModel(models.Model):
 
     def get_absolute_url(self):
         return reverse("car_model_detail", kwargs={"pk": self.pk})
-
+    
 
 class Car(models.Model):
     customer = models.CharField(_("customer"), max_length=95)
     car_model = models.ForeignKey(
         CarModel, 
-        verbose_name=_("carmodel"),
+        verbose_name=_("car model"),
         on_delete=models.CASCADE,
         related_name='cars',
     )
