@@ -1,0 +1,133 @@
+body { 
+    font-family: Arial, Helvetica, sans-serif; 
+    background-color: black; 
+    color: rgb(151, 151, 151);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1, h2 {
+    border-bottom: 2px solid #c1bebe;
+}
+p {
+    padding: 0 1rem;
+}
+header, footer {
+    background-color: rgb(17, 17, 17);
+    margin: 0;
+    padding: 1rem 0;
+}
+header {
+    padding: 0.15px;
+}
+header a{
+    color: #c1bebe;
+    text-decoration: none;
+}
+
+header a:hover{
+    color: aliceblue;
+    font-size: 25px;
+}
+header ul.nav {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    padding-inline-start: 0;
+}
+header ul.nav li {
+    margin: 0 0.5rem;
+   
+}
+footer {
+    text-align: center;
+}
+main {
+     flex-grow: 1;
+}
+ul.nice-list {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding-inline-start: none;
+    padding: 0.5rem;
+    margin: 1rem;
+    border: 1px solid #ccaa77;
+    background-color: #c0c0c0;
+    box-shadow: 1px 3px 5px #00000033;
+}
+ul.card-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding-inline-start: 0;
+    padding: 0;
+    margin: 1rem;
+    gap: 1rem;
+}
+ul.card-list li {
+    border: 1px solid #ccaa77;
+    background-color: #c0c0c0;
+    box-shadow: 1px 3px 5px #00000033;
+    border-radius: 1rem;
+    max-width: calc(100% - 2rem);
+}
+ul.card-list h4 {
+    margin: 1rem;
+    font-size: large;
+}
+ul.nice-list li {
+    margin: 0.25rem 0;
+    padding: 0.25rem 0;
+    border: 1px solid #c1bebe;
+}
+ul.card-list li:hover {
+    background-color: #e0e0e0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+th {
+    background-color: #0c0a0a;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+tr:nth-child(even) {
+    background-color: #242020;
+}
+td {
+    text-align: center;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+tr:hover {
+    background-color: #e0e0e0;
+}
+div.pager {
+    margin: 0.5rem 1rem;
+}
+div.pager a {
+    border: 1px solid #ccaa77;
+    background-color: #d8d8d8;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+}
+div.pager a:hover {
+    background-color: #dddddd;
+}
+div.pager form {
+    display: inline-block;
+}
+img.part-cover {
+    margin: 1rem 1rem 0;
+    border: 1px solid #CCCCCC;
+    border-radius: 1rem;
+}

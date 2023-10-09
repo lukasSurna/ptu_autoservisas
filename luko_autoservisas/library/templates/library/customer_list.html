@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Customer{% endblock title %}
+{% block content %}
+<h1>Customers</h1>
+{% if customers %}
+    <ul class="nice-list">
+        {% for customer in customers %}
+            <li><a href='{% url "customer_detail" customer.pk %}'>{{ customer.customer }}</a><li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No customer was found</p>
+{% endif %}
+
+{% endblock content %}

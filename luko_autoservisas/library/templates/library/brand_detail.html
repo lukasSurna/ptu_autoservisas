@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %} {{ brand }} in {{ block.super }}{% endblock title %}
+{% block content %}
+<h1>{{ brand.brand }}</h1>
+    <ul class="nice-list">
+        {% for model in brand.cars.all %}
+            <li>{{ brand.model }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}

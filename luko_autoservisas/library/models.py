@@ -80,7 +80,8 @@ class ServiceOrder(models.Model):
 class PartService(models.Model):
     name = models.CharField(_("name"), max_length=50, db_index=True)
     price = models.DecimalField(_("price"), max_digits=12, decimal_places=2)
-    
+    description = models.TextField(_("Description"), max_length=4000, default='', blank=True)
+    cover = models.ImageField(_('nopart'), upload_to='part_covers', null=True, blank=True)
 
     class Meta:
         verbose_name = _("part_service")

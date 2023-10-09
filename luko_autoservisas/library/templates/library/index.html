@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Welcome to {{ block.super }}{% endblock title %}
+{% block content %}
+    <h1>Welcome to Autoservice</h1>
+    <p>Currently in our service: </p>
+    <ul>
+        <li>Car Models: {{ num_carModel}}</li>
+        <li>Parts: {{ parts }} </li>
+        <li>Orders: {{ orders }} </li>
+        <li>Completed orders: {{ completed_orders }} </li>
+    </ul>
+    <h2>Car Brands</h2>
+    <ul>
+        {% for brand in brands %}
+            <li>{{ brand }}</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{{ customer.customer }} - Customer Detail{{ block.super }}{% endblock title %}
+
+{% block content %}
+<h1>{{ customer.customer }}</h1>
+
+{% if cars %}
+    <h3>Car Information:</h3>
+    <ul class="nice-list">
+        {% for car in cars %}
+            <li>Brand: {{ car.car_model.brand }}</li>
+            <li>Model: {{ car.car_model.model }}</li>
+            <li>Plate: {{ car.plate }}</li>
+            <li>VIN: {{ car.vin }}</li>
+            <li>Color: {{ car.color }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No car information found for this customer</p>
+{% endif %}
+{% endblock content %}

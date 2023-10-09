@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Brands in {{ block.super }}{% endblock title %}
+{% block content %}
+<h1>Brands</h1>
+{% if brand_list %}
+    <ul class="nice-list">
+        {% for brand in brand_list %}
+            <li><a href="{% url "brand_detail"  brand.pk %}"> {{ brand.brand }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No brand found</p>
+{% endif %}
+
+{% endblock content %}
+

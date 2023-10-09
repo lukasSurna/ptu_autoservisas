@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Service Orders{% endblock title %}
+{% block content %}
+<h1>Orders</h1>
+{% include "library/inc/pager_prev_next.html" %}
+{% if service_orders %}
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Client</th>
+            <th>Service Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in service_orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.date }}</td>
+            <td><a href="{% url 'customer_detail' order.car.pk %}">{{ order.car.customer }}</td>
+            <td>{{ order.lines.first.part_service.name }}</td>
+            <td>{{ order.lines.first.quantity }}</td>
+            <td>${{ order.lines.first.price }}</td>
+            <td>
+                {% if order.order_status == 0 %}
+                Pending
+                {% elif order.order_status == 1 %}
+                Awaiting Payment
+                {% elif order.order_status == 2 %}
+                Cancelled
+                {% elif order.order_status == 3 %}
+                Declined
+                {% elif order.order_status == 4 %}
+                Completed
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No service orders available.</p>
+{% endif %}
+{% include "library/inc/pager_pages.html" %}
+{% endblock content %}
