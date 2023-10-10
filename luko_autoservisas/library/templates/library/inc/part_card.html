@@ -1,0 +1,11 @@
+{% load static %}
+<li class="center">
+    <a href='{% url "part_detail" part.pk %}'>
+        {% if part.cover %}
+            <img class="part-cover" src="{{ part.cover.url }}" alt="{{ part.name }}">
+        {% else %}
+            <img class="part-cover" src="{% static 'img/nopart.png' %}" alt="{{ part.name }}">
+        {% endif %}
+        <h3>{{ part }}</h3>
+    </a>
+</li>

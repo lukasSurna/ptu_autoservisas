@@ -1,6 +1,11 @@
+from datetime import date
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
+
+User = get_user_model()
+
 
 class CarModel(models.Model):
     brand = models.CharField(_("brand"), max_length=50, db_index=True)
@@ -64,8 +69,13 @@ class ServiceOrder(models.Model):
     order_status = models.PositiveSmallIntegerField(
         _("status"), choices=ORDER_STATUS, default=0,
     )
-
-
+    reader = models.ForeignKey(
+        User, 
+        verbose_name=_("reader"), 
+        on_delete=models.CASCADE,
+        null=True, blank=True,
+    )
+    
     class Meta:
         verbose_name = _("service_order")
         verbose_name_plural = _("service_orders")
@@ -76,6 +86,13 @@ class ServiceOrder(models.Model):
 
     def get_absolute_url(self):
         return reverse("service_order_detail", kwargs={"pk": self.pk})
+    
+    @property
+    def is_overdue(self):
+        if self.due_back and self.due_back < date.today():
+            return True
+        return False
+    
 
 class PartService(models.Model):
     name = models.CharField(_("name"), max_length=50, db_index=True)

@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load static %}
 {% block title %}Parts in {{ block.super }}{% endblock title %}
 {% block content %}
 <h1>Parts</h1>
@@ -9,16 +8,7 @@
     {% endwith %}
     <ul class="card-list">
         {% for part in part_list %}
-            <li class="center">
-                <a href='{% url "part_detail" part.pk %}'>
-                    {% if part.cover %}
-                        <img class="part-cover" src="{{part.cover.url}}" alt="{{ part.name }}">
-                    {% else %}
-                        <img class="part-cover" src="{% static "img/nopart.png" %}">
-                    {% endif %}
-                    <h3>{{ part }}</h3>
-                </a>
-            </li>
+            {% include "library/inc/part_card.html" %}
         {% endfor %}
     </ul>
     {% with part_list as page_obj %}

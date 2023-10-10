@@ -4,9 +4,7 @@
 {% block content %}
 <h1>{{ part.name }}</h1>
 {% if part.cover %}
-    <img class="part-cover" src="{{part.cover.url}}" alt="{{ part.name }}">
-{% else %}
-    <img class="part-cover" src="{% static "img/nopart.png" %}">
+    {% include "library/inc/part_card.html" %}    
 {% endif %}
-    <div clas="info">{{ part.description}}</div>
+    <div class="info">{{ part.description}}</div>
 {% endblock content %}

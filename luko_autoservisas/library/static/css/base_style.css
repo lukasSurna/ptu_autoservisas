@@ -47,7 +47,7 @@ footer {
 main {
      flex-grow: 1;
 }
-ul.nice-list {
+ul.nice-list, ul.errorlist {
     display: flex;
     flex-direction: column;
     list-style-type: none;
@@ -79,7 +79,7 @@ ul.card-list h4 {
     margin: 1rem;
     font-size: large;
 }
-ul.nice-list li {
+ul.nice-list li, ul.errorlist li {
     margin: 0.25rem 0;
     padding: 0.25rem 0;
     border: 1px solid #c1bebe;
@@ -130,4 +130,10 @@ img.part-cover {
     margin: 1rem 1rem 0;
     border: 1px solid #CCCCCC;
     border-radius: 1rem;
+}
+ul.errorlist {
+    background-color: #ddb8b8;
+}
+ul li.spacer {
+    flex-grow: 1;
 }
