@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Place Order{% endblock title %}
+{% block content %}
+<div class="container">
+    <h1>Place Order</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Place Order</button>
+        <a href="{% url 'user_car_list' %}">Cancel Order</a>
+    </form>
+</div>
+{% endblock content %}

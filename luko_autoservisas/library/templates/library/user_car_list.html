@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}My Cars from {{ block.super }}{% endblock title %}
+{% block content %}
+<h1>My Cars</h1>
+<a href="{% url "add_car" %}" class="add-car">Add Car</a>
+{% if car_list %}
+    <table class="car-model-table">
+        <tr>
+            <th>Model</th>
+            <th>Plate</th>
+            <th>Vin</th>
+            <th>Color</th>
+            <th>Action</th>
+        </tr>
+    {% for car in car_list %}
+        <tr>
+            <td><a href="{% url 'car_service_orders' car.id %}">{{ car.car_model }}</a></td>
+            <td>{{ car.plate }}</td>
+            <td>{{ car.vin }}</td>
+            <td>{{ car.color }}</td>
+            <td><a href="{% url 'place_order' car.id %}">Place Order</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No cars found.</p>
+{% endif %}
+{% endblock content %}

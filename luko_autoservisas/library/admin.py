@@ -28,7 +28,7 @@ class CarAdmin(admin.ModelAdmin):
     inlines = [ServiceOrderLineInline]
 
 
-class PartsServiceAdmin(admin.ModelAdmin):
+class PartServiceAdmin(admin.ModelAdmin):
     list_display = ('name', 'price')
     search_fields = ('name',)
 
@@ -36,6 +36,8 @@ class PartsServiceAdmin(admin.ModelAdmin):
 class OrderLineAdmin(admin.ModelAdmin):
     list_display = ('order', 'part_service', 'quantity', 'price')
     search_fields = ('order__car__customer', 'part_service__name', 'quantity', 'price')
+    list_filter = ("part_service__name",)
+    raw_id_fields = ("order", "part_service")
     
 
 
@@ -44,10 +46,13 @@ class ServiceOrderAdmin(admin.ModelAdmin):
     search_fields = ('car__customer', 'date', 'order_status')
     inlines = [OrderLineInline]
 
-
+@admin.register(models.PartServiceReview)
+class PartServiceReviewAdmin(admin.ModelAdmin):
+    list_display = ("partservice", "reviewer", "created_at")
+    list_display_links = ("created_at", )
 
 admin.site.register(models.CarModel, CarModelAdmin)
 admin.site.register(models.Car, CarAdmin)
-admin.site.register(models.PartService, PartsServiceAdmin)
+admin.site.register(models.PartService, PartServiceAdmin)
 admin.site.register(models.ServiceOrder, ServiceOrderAdmin)
 admin.site.register(models.OrderLine, OrderLineAdmin)

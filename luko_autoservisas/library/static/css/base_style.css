@@ -137,3 +137,27 @@ ul.errorlist {
 ul li.spacer {
     flex-grow: 1;
 }
+form p label {
+    display: inline-block;
+    min-width: 10rem;
+}
+div.box {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid #999999;
+}
+.box-errror {
+    background-color: #e0c0c0;
+}
+.box-success {
+    background-color: #c0e0c0;
+}
+.box-warning {
+    background-color: #e0e0c0;
+}
+.box-info {
+    background-color: #c0c0e0;
+}
+.box-debug {
+    background-color: #a8a8a8;
+}

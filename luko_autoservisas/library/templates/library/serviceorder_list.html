@@ -14,6 +14,7 @@
             <th>Quantity</th>
             <th>Price</th>
             <th>Status</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -21,10 +22,10 @@
         <tr>
             <td>{{ order.id }}</td>
             <td>{{ order.date }}</td>
-            <td><a href="{% url 'customer_detail' order.car.pk %}">{{ order.car.customer }}</td>
+            <td><a href="{% url 'customer_detail' order.car.pk %}">{{ order.car.customer }}</a></td>
             <td>{{ order.lines.first.part_service.name }}</td>
             <td>{{ order.lines.first.quantity }}</td>
-            <td>${{ order.lines.first.price }}</td>
+            <td>€{{ order.lines.first.price }}</td>
             <td>
                 {% if order.order_status == 0 %}
                 Pending
@@ -36,6 +37,14 @@
                 Declined
                 {% elif order.order_status == 4 %}
                 Completed
+                {% endif %}
+            </td>
+            <td>
+                {% if order.order_status == 0 %}
+                    <form method="post" action="{% url 'cancel_order' order.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Cancel</button>
+                    </form>
                 {% endif %}
             </td>
         </tr>

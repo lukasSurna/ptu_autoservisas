@@ -25,7 +25,7 @@ class CarModel(models.Model):
     
 
 class Car(models.Model):
-    customer = models.CharField(_("customer"), max_length=95)
+    customer = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_("customer"))
     car_model = models.ForeignKey(
         CarModel, 
         verbose_name=_("car model"),
@@ -36,11 +36,11 @@ class Car(models.Model):
     vin = models.CharField(_("vin"), max_length=17)
     color = models.CharField(_("color"), max_length=20)
 
-
     class Meta:
         verbose_name = _("car")
         verbose_name_plural = _("cars")
         ordering = ['customer', 'plate']
+
     def __str__(self):
         return f"{self.customer}, {self.car_model}, {self.plate}, {self.vin}, {self.color}"
 
@@ -65,17 +65,11 @@ class ServiceOrder(models.Model):
     db_index=True,
     null=False
     )
-    date = models.DateField(_("date"), null=True, blank=True, db_index=True)
+    date = models.DateField(_("date"), auto_now=True, db_index=True)
     order_status = models.PositiveSmallIntegerField(
         _("status"), choices=ORDER_STATUS, default=0,
     )
-    reader = models.ForeignKey(
-        User, 
-        verbose_name=_("reader"), 
-        on_delete=models.CASCADE,
-        null=True, blank=True,
-    )
-    
+
     class Meta:
         verbose_name = _("service_order")
         verbose_name_plural = _("service_orders")
@@ -140,3 +134,35 @@ class OrderLine(models.Model):
 
     def get_absolute_url(self):
         return reverse("order_line_detail", kwargs={"pk": self.pk})
+
+
+class PartServiceReview(models.Model):
+    partservice = models.ForeignKey(
+        PartService,
+        verbose_name=_("part or service"),
+        on_delete=models.CASCADE,
+        related_name='reviews',
+    )
+    reviewer = models.ForeignKey(
+        User,
+        verbose_name=_("reviewer"),
+        on_delete=models.CASCADE,
+        related_name='part_service_reviews',
+    )
+    content = models.TextField(_("Content"), max_length=4000)
+    created_at = models.DateTimeField(
+        _("created at"),
+        auto_now_add=True,
+        db_index=True,
+    )
+
+    class Meta:
+        verbose_name = _("part or service review")
+        verbose_name_plural = _("part or service reviews")
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"{self.partservice} review by {self.reviewer}"
+
+    def get_absolute_url(self):
+        return reverse("partservicereview_detail", kwargs={"pk": self.pk})

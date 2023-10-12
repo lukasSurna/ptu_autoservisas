@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ user }}profile at {{ block.super }}{% endblock title %}
+{% block content %}
+<h1>{{ user }} profile</h1>
+{% if user.profile.photo %}
+    <img class="profile-photo" src="{{ user.profile.photo.url }}">
+{% else %}
+    <img src="{% static "/img/no_pic.jpg" %}">
+{% endif %}
+<p>Full Name: {{ user.first_name}} {{ user.last_name}} </p>
+<p>Email: {{ user.email }}
+<p><a href="{% url "profile_update" %}" class="btn">Update</a></p>
+{% endblock content %}</p>
