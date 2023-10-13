@@ -23,7 +23,7 @@
             <td>{{ order.id }}</td>
             <td>{{ order.date }}</td>
             <td><a href="{% url 'customer_detail' order.car.pk %}">{{ order.car.customer }}</a></td>
-            <td>{{ order.lines.first.part_service.name }}</td>
+            <td><a href="{% url 'part_detail' order.lines.first.part_service.pk %}">{{ order.lines.first.part_service.name }}</td></a>
             <td>{{ order.lines.first.quantity }}</td>
             <td>€{{ order.lines.first.price }}</td>
             <td>

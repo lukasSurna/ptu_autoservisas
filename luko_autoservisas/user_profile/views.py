@@ -63,3 +63,7 @@ def signup(request: HttpRequest):
             messages.success(request, "Sign up successful. You can log in now.")
             return redirect('login')
     return render(request, 'user_profile/signup.html')
+
+def profile_view(request):
+    user = request.user  # Assuming you want to display the currently logged-in user's profile
+    return render(request, 'profile_template.html', {'user': user})

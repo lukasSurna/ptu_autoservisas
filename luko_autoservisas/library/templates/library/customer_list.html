@@ -5,7 +5,9 @@
 {% if customers %}
     <ul class="nice-list">
         {% for customer in customers %}
-            <li><a href='{% url "customer_detail" customer.pk %}'>{{ customer.customer }}</a><li>
+            <li>
+                <a href='{% url "customer_detail" customer.pk %}'>{{ customer.customer }}</a>
+            </li>
         {% endfor %}
     </ul>
 {% else %}

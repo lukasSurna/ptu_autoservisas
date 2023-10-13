@@ -8,7 +8,7 @@
 {% else %}
     <img src="{% static "/img/no_pic.jpg" %}">
 {% endif %}
-<p>Full Name: {{ user.first_name}} {{ user.last_name}} </p>
-<p>Email: {{ user.email }}
+<p>Full Name: {{ user.first_name }} {{ user.last_name }}</p>
+<p>Email: {{ user.email }}</p>
 <p><a href="{% url "profile_update" %}" class="btn">Update</a></p>
 {% endblock content %}</p>

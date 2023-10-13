@@ -3,7 +3,7 @@
 {% block content %}
     <h1>Welcome to Autoservice</h1>
     <p>Currently in our service: </p>
-    <ul>
+    <ul class="nice-list">
         <li>Car Models: {{ num_carModel}}</li>
         <li>Parts: {{ parts }} </li>
         <li>Orders: {{ orders }} </li>
@@ -11,7 +11,7 @@
         <li>Your visits: {{ num_visits }}</li>
     </ul>
     <h2>Car Brands</h2>
-    <ul>
+    <ul class="nice-list">
         {% for brand in brands %}
             <li>{{ brand }}</li>
         {% endfor %}

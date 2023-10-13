@@ -94,7 +94,7 @@ class ServiceListView(generic.ListView):
     model = models.ServiceOrder
     template_name = 'service_list.html'
     context_object_name = 'service_orders'
-    paginate_by = 1 #kiek irasu rodyti puslapyje
+    paginate_by = 8 #kiek irasu rodyti puslapyje
  
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context =  super().get_context_data(**kwargs)
@@ -169,20 +169,13 @@ def index(request: HttpRequest):
     return render(request, 'library/index.html', context)
 
 def parts(request: HttpRequest):
-    part_pages = Paginator(models.PartService.objects.all(), 2) #kiek irasu rodyti puslapyje
+    part_pages = Paginator(models.PartService.objects.all(), 8) #kiek irasu rodyti puslapyje
     current_page = request.GET.get('page') or 1
     return render(
         request,
         'library/part_list.html',
         {'part_list': part_pages.get_page(current_page)},
     )
-
-# def part_detail(request:HttpRequest, pk:int):
-#     return render(
-#         request,
-#         'library/part_detail.html',
-#         {'part': get_object_or_404(models.PartService, pk=pk)}
-#     )
 
 def brand_list(request: HttpRequest):
     return render(

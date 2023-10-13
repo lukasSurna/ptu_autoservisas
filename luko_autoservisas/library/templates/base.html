@@ -9,13 +9,14 @@
 </head>
 <body>
     <header>
-        <ul class="nav">
+        <ul class="nav-left">
             <li><a href="{% url "index" %}">Home</a></li>
             <li><a href="{% url "part_list" %}">Parts</a></li>
             <li><a href="{% url "customer_list" %}">Customers</a></li>
             <li><a href="{% url "brand_list" %}">Car Brands</a></li>
             <li><a href="{% url "serviceorder_list" %}">Orders</a></li>
-            <li class="spacer"></li>
+        </ul>
+        <ul class="nav-right">
             {% if user.is_authenticated %}
                 <li>Welcome, <a href="{% url "profile" %}">{{ user.username }}</a></li>
                 <li><a href="{% url "user_car_list" %}">My Cars</a></li>
@@ -27,7 +28,7 @@
                 <li>Welcome, Guest</li>
                 <li><a href="{% url "login" %}">Log In</a></li>
                 <li><a href="{% url "signup" %}">Sign Up</a></li>
-            {% endif %}           
+            {% endif %}  
         </ul>
     </header>
     <main>

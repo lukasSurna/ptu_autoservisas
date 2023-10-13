@@ -1,163 +1,350 @@
-body { 
-    font-family: Arial, Helvetica, sans-serif; 
-    background-color: black; 
-    color: rgb(151, 151, 151);
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+body {
+    background: #121212;
+    color: #fff;
 }
-
-h1, h2 {
-    border-bottom: 2px solid #c1bebe;
+.container {
+    background: #1f1f1f;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 p {
-    padding: 0 1rem;
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: #ccc;
 }
-header, footer {
-    background-color: rgb(17, 17, 17);
-    margin: 0;
-    padding: 1rem 0;
+h1 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 0.5rem;
+    color: #fff;
 }
-header {
-    padding: 0.15px;
+h2 {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+    color: #fff;
 }
-header a{
-    color: #c1bebe;
-    text-decoration: none;
+form p {
+    width: 600px; /* Adjust the width as needed */
+    padding: 10px; /* Add padding for spacing */
+    margin-bottom: 10px; /* Add margin at the bottom for spacing between inputs */
 }
 
-header a:hover{
-    color: aliceblue;
-    font-size: 25px;
+form {
+    margin-top: 20px;
+    display: inline-block;
+    margin: 0;
 }
-header ul.nav {
+button {
+    background: #0077cc;
+    color: #fff;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+button:hover {
+    background: #005baa;
+}
+ul.nice-list {
+    list-style: none;
+    padding: 0 0.5rem;
+}
+ul.cool-list {
+    list-style: none;
+    padding: 0;
+}
+li {
+    border: 1px solid #444; 
+    padding: 10px;
+    margin: 10px 0;
+    background: #1f1f1f;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.float-right {
+    float: right;
+}
+header {
+    background: #0a0a0a;
+    padding: 10px -20px;
     display: flex;
-    flex-direction: row;
-    list-style-type: none;
-    padding-inline-start: 0;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-header ul.nav li {
-    margin: 0 0.5rem;
-   
+.nav-left li {
+    display: inline;
+    margin: 0 10px;
+    color: #fff;
+}
+.nav-left a {
+    text-decoration: none;
+    color: #ccc; 
+    transition: color 0.3s ease; 
+}
+.nav-left a:hover {
+    color: #00aaff;
+}
+.nav-right li {
+    display: inline;
+    margin: 0 10px;
+    color: #fff;
+}
+.nav-right a {
+    text-decoration: none;
+    color: #ccc; 
+    transition: color 0.3s ease; 
+}
+.nav-right a:hover {
+    color: #00aaff; 
 }
 footer {
     text-align: center;
-}
+    background: #0a0a0a;
+    padding: 10px 0;
+    color: #fff;
+    margin-top: auto;
+} 
 main {
-     flex-grow: 1;
+    min-height: 100vh;
+} 
+.add-car {
+    background: #0077cc;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    max-width: 120px; 
+    width: auto; 
+    text-align: center;
+    line-height: 1.6;
 }
-ul.nice-list, ul.errorlist {
-    display: flex;
-    flex-direction: column;
-    list-style-type: none;
-    padding-inline-start: none;
-    padding: 0.5rem;
-    margin: 1rem;
-    border: 1px solid #ccaa77;
-    background-color: #c0c0c0;
-    box-shadow: 1px 3px 5px #00000033;
+.add-car:hover {
+    background: #005baa;
 }
-ul.card-list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    list-style-type: none;
-    padding-inline-start: 0;
-    padding: 0;
-    margin: 1rem;
-    gap: 1rem;
+.car-model-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.2rem;
+    margin-top: 20px;
 }
-ul.card-list li {
-    border: 1px solid #ccaa77;
-    background-color: #c0c0c0;
-    box-shadow: 1px 3px 5px #00000033;
-    border-radius: 1rem;
-    max-width: calc(100% - 2rem);
+.car-model-table th, .car-model-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
 }
-ul.card-list h4 {
-    margin: 1rem;
-    font-size: large;
+.car-model-table th {
+    background: #0077cc;
+    color: #fff;
 }
-ul.nice-list li, ul.errorlist li {
-    margin: 0.25rem 0;
-    padding: 0.25rem 0;
-    border: 1px solid #c1bebe;
+.car-model-table td a {
+    text-decoration: none;
+    color: #00aaff;
+    transition: color 0.3s ease;
 }
-ul.card-list li:hover {
-    background-color: #e0e0e0;
+.car-model-table td a:hover {
+    color: #005baa;
 }
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    font-size: 1.2rem;
+    margin-top: 20px;
 }
-th {
-    background-color: #0c0a0a;
+table thead th {
+    background: #0077cc;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+table tbody td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+table tbody a {
+    text-decoration: none;
+    color: #00aaff;
+    transition: color 0.3s ease;
+}
+table tbody a:hover {
+    color: #005baa;
+}
+button.btn-danger {
+    background: #ff0000;
+    color: #fff;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+button.btn-danger:hover {
+    background: #cc0000;
+}
+a.btn {
+    background: #0077cc;
+    color: #fff;
+    font-size: 1rem;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: inline-block;
+    margin-top: 20px;
+}
+a.btn:hover {
+    background: #005baa;
+}
+.card-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.card-list li {
+    flex: 0 0 calc(33.33% - 20px);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+.card-list li:hover {
+    transform: scale(1.05);
+}
+.card-list img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+    display: block;
+    position: relative;
+    z-index: 1; 
+}
+.card-list p {
+    font-size: 1rem;
+    margin: 10px 0;
+    color: #333;
+    position: relative;
+    z-index: 2; 
+}
+.card-list h2 {
+    font-size: 1.2rem;
+    color: #0077cc;
+    position: relative;
+    z-index: 2;
+}
+.pager {
+    text-align: center;
+    margin-top: 20px;
+}
+.pager a {
+    text-decoration: none;
+    color: #0077cc;
     font-weight: bold;
-    text-align: center;
-    padding: 8px;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    margin: 0 10px;
 }
-tr:nth-child(even) {
-    background-color: #242020;
+.pager a:hover {
+    text-decoration: underline;
 }
-td {
-    text-align: center;
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
+.current {
+    color: #333;
+    font-weight: bold;
+    margin: 0 10px;
 }
-tr:hover {
-    background-color: #e0e0e0;
+input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
-div.pager {
-    margin: 0.5rem 1rem;
+button[type="submit"] {
+    background: #0077cc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 5px;
 }
-div.pager a {
-    border: 1px solid #ccaa77;
-    background-color: #d8d8d8;
-    border-radius: 0.25rem;
-    padding: 0.25rem;
+a.reset-link {
+    margin-left: 10px;
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: bold;
 }
-div.pager a:hover {
-    background-color: #dddddd;
+a.reset-link:hover {
+    text-decoration: underline;
 }
-div.pager form {
+.profile-photo {
+    max-width: 100%;
+    border: 3px solid #0077cc;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+a.btn {
+    background: #0077cc;
+    color: #fff;
+    font-size: 1rem;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
     display: inline-block;
+    margin-top: 20px;
 }
-img.part-cover {
-    margin: 1rem 1rem 0;
-    border: 1px solid #CCCCCC;
-    border-radius: 1rem;
+a.btn:hover {
+    background: #005baa;
 }
-ul.errorlist {
-    background-color: #ddb8b8;
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
-ul li.spacer {
-    flex-grow: 1;
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 20%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
-form p label {
-    display: inline-block;
-    min-width: 10rem;
+button[type="submit"] {
+    background: #0077cc;
+    color: #fff;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
-div.box {
-    margin: 0.5rem;
-    padding: 0.5rem;
-    border: 1px solid #999999;
+button[type="submit"]:hover {
+    background: #005baa;
 }
-.box-errror {
-    background-color: #e0c0c0;
+a {
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: bold;
 }
-.box-success {
-    background-color: #c0e0c0;
+a:hover {
+    text-decoration: underline;
 }
-.box-warning {
-    background-color: #e0e0c0;
-}
-.box-info {
-    background-color: #c0c0e0;
-}
-.box-debug {
-    background-color: #a8a8a8;
-}
+

@@ -27,7 +27,7 @@ class Profile(models.Model):
         if self.photo:
             photo = Image.open(self.photo.path)
             if photo.height > 300 or photo.width > 500:
-                resized_dimensions = (500, 300)
+                resized_dimensions = (800, 300)
                 photo.thumbnail(resized_dimensions)
                 photo.save(self.photo.path)
 
